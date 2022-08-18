@@ -6,7 +6,7 @@ public class DrozdTask1 {
         int maxIndex = 0;
         int min = nums[0];
         int minIndex = 0;
-        int sum = 0;
+        int result = 0;
 
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] > max) {
@@ -20,20 +20,20 @@ public class DrozdTask1 {
             }
         }
 
-        if (maxIndex > minIndex) {
-            for (int i = minIndex + 1; i < maxIndex; i++) {
-                sum += nums[i];
-            }
-        } else
-            if (maxIndex < minIndex) {
-                for (int i = maxIndex + 1; i < minIndex; i++) {
-                    sum += nums[i];
-                }
-            }
+        if (maxIndex > minIndex) result = sum(nums, minIndex, maxIndex);
+        else
+            if (maxIndex < minIndex) result = sum(nums, maxIndex, minIndex);
 
         System.out.println("Min number: " + min + " , index: " + minIndex);
         System.out.println("Max number: " + max + " , index: " + maxIndex);
-        System.out.println("Sum is " + sum);
+        System.out.println("Sum is " + result);
+    }
 
+    static int sum (int[] nums, int start, int end) {
+        int sum = 0;
+        for (int i = start + 1; i < end; i++) {
+            sum += nums[i];
+        }
+        return sum;
     }
 }
